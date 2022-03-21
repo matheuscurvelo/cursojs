@@ -1,0 +1,9 @@
+// npm init -y
+// npm install --save-dev @babel/cli @babel/preset-env @babel/core
+// npx babel main.js -o bundle.js --presets=@babel/env
+
+adicionar ao arquivo "package.json", dentro de "scripts":
+    "babel": "babel ./main.js -o ./bundle.js --presets=@babel/env -w"
+
+e rodar:
+npm run babel

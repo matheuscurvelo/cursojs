@@ -1,0 +1,52 @@
+<!-- fetch -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 112</title>
+</head>
+<body>
+    <a href="https://servicodados.ibge.gov.br/api/v1/localidades/distritos">UF</a>
+    <div class="resultado"></div>
+    <script>
+        
+        document.addEventListener('click', e => {
+            const el = e.target
+            const tag = el.tagName.toLowerCase()
+
+            if (tag === 'a') {
+                e.preventDefault()
+                carregaPagina(el)
+            }
+        })
+
+        /* function carregaPagina(el) {
+            const href = el.getAttribute('href')
+            
+            fetch(href).then(resposta => response.text())
+            .then(json => carregaResultado(json))
+            .catch(e => console.error(e))
+
+        } */
+
+        //async await
+        async function carregaPagina(el) {
+            const href = el.getAttribute('href')
+            
+            const response = await fetch(href)
+            const json = await response.json()
+
+            console.log(json);
+            //carregaResultado(json)
+        }
+
+        function carregaResultado(response) {
+            const resultado = document.querySelector('.resultado')
+            resultado.innerHTML = response
+        }
+    </script>
+</body>
+</html>
+

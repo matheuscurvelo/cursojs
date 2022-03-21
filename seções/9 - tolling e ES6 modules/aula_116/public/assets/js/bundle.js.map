@@ -1,0 +1,1 @@
+{"version":3,"file":"bundle.js","mappings":";;;;;AAAAA,KAAK,CAAC,WAAD,CAAL;AACAC,OAAO,CAACC,GAAR,G","sources":["webpack://aula_116/./src/index.js"],"sourcesContent":["alert('Olá mundo');\nconsole.log();"],"names":["alert","console","log"],"sourceRoot":""}

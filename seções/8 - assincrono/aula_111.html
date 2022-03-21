@@ -1,0 +1,85 @@
+<!-- xhr -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 111</title>
+</head>
+<body>
+    <a href="https://servicodados.ibge.gov.br/api/v1/localidades/distritos">UF</a>
+    <div class="resultado"></div>
+    <script>
+        const request = obj => {
+            return new Promise((resolve,reject) => { //com promise
+                const xhr = new XMLHttpRequest();
+                xhr.open(obj.method,obj.url)
+                xhr.send();
+
+                xhr.addEventListener('load', () => {
+                    if (xhr.status >= 200 && xhr.status < 300) {
+                        resolve(xhr.responseText) // usa o resolve ao inves do obj.success(xhr.responseText)
+                    } else {
+                        reject(xhr.statusText) // usa o reject ao inves do obj.error(xhr.statusText)
+                    }
+                })
+            })
+            
+        }
+
+        document.addEventListener('click', e => {
+            const el = e.target
+            const tag = el.tagName.toLowerCase()
+
+            if (tag === 'a') {
+                e.preventDefault()
+                carregaPagina(el)
+            }
+        })
+
+        /* function carregaPagina(el) {
+            const href = el.getAttribute('href')
+            request({
+                method: 'GET',
+                url: href,
+                success(response){
+                    carregaResultado(response)
+                },
+                error(erro){
+                    console.error('Erro: ',erro);
+                }
+                
+            })
+        } */
+
+        //Promise
+        /* function carregaPagina(el) {
+            const href = el.getAttribute('href')
+            request({
+                method: 'GET',
+                url: href,               
+            }).then(response => carregaResultado(response))
+            .catch(error => console.error(error))
+        } */
+
+        //async await
+        async function carregaPagina(el) {
+            const href = el.getAttribute('href')
+            const response = await request({
+                method: 'GET',
+                url: href,               
+            })
+            console.log(response);
+            carregaResultado(response)
+
+        }
+
+        function carregaResultado(response) {
+            const resultado = document.querySelector('.resultado')
+            resultado.innerHTML = response
+        }
+    </script>
+</body>
+</html>
+

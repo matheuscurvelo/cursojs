@@ -1,0 +1,30 @@
+//filter + map + reduce
+
+const numeros = [4,5,51,7,87,9,8,1,3,6,4,2,89,45,36,78,15]
+
+console.log(numeros.filter( valor => valor % 2 === 0 ) // retorna um novo array filtrado só com os pares
+.map(valor => valor * 2 ) // retorna um novo array modificado com o dobro dos numeros pares
+.reduce((ac,valor) => ac + valor ) // returna a soma do array dobrado dos numeros pares
+);
+
+/* const pessoas = [
+    {nome: 'Matheus', idade: 25},
+    {nome: 'Gil', idade: 24},
+    {nome: 'Renan', idade: 23},
+    {nome: 'Nicolle', idade: 22},
+]
+
+//quando se usa objetos acaba alterando o objeto original
+console.log(pessoas.reduce((acumulador,obj) => {
+    console.log(obj);
+    console.log(acumulador.idade, ' > ', obj.idade);
+
+    if (acumulador.idade > obj.idade) {
+        return acumulador
+    }
+    return valor
+} )); */
+
+//alterar os elementos do array original - map
+//filtrar o array - filter
+//reduzir a um elemento - reduce

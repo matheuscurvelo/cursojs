@@ -1,0 +1,37 @@
+npm i regenerator-runtime core-js 
+npm i --save-dev @babel/preset-env @babel/core @babel/cli babel-loader webpack webpack-cli 
+
+
+criar o arquivo 'webpack.config.js' com o seguinte conteudo:
+
+const path = require('path');
+
+```js
+module.exports = {
+    entry: './src/index.js',
+    mode: 'development',
+    output: {
+        path: path.resolve(__dirname, 'public', 'assets', 'js'),
+        filename: 'bundle.js',
+    },
+    module: {
+        rules: [{
+            exclude: /node_modules/,
+            test: /\.js$/,
+            use: {
+                loader: 'babel-loader',
+                options: {
+                    presets: ['@babel/env']
+                }
+            }
+        }]
+    },
+    devtool: 'source-map'
+};
+
+```
+
+inserir no obj script de 'package.json' o seguinte atributo:
+"gera": "webpack -w"
+
+npm run gera
