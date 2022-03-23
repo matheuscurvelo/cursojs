@@ -1,0 +1,28 @@
+npm init -y
+
+npm i express
+"express": "^4.17.3" -> ^ significa que ela vai ser atualizada se sair atualização
+
+npm i express -E
+"express": "4.17.3" -> significa que ela nunca vai ser atualizada
+
+npm update              //para atualizar os pacotes
+
+npm i express --save-dev  //para salvar em ambiente de dev "devDependencies"
+npm i express --save-prod //para salvar em ambiente de prod   "dependencies"
+
+npm i express@2.1.0     //para instalar uma versao especifica
+
+^ minor e patch
+~ patch
+
+2.    1.    0
+major minor patch
+
+patch = correcao de bugs
+minor = adição de recursos novos
+major = quebra a compatibilidade das versoes anteriores
+
+npm ls                  //lista os pacotes
+npm outdated            //lista pacotes desatualizados
+npm uninstall express   //deinstalar um pacote
